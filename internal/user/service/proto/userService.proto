@@ -1,0 +1,26 @@
+syntax = "proto3"; // 指定proto版本，有2和3
+
+package proto;     // 指定文件生成出来的package，感觉没啥用，注释也不影响，都是按照option的
+import "userModel.proto";
+
+
+option go_package = "./;proto";
+
+
+// 用户注册
+message UserRequest {//类似结构体了
+  string Name = 1;
+  string Phone = 2;
+  string password =3;
+}
+
+message UserResponse{
+  uint32 Code = 1;
+  User User = 2;
+  string Msg = 3;
+}
+
+service UserService{
+  rpc UserLogin(UserRequest) returns (UserResponse);
+  rpc UserRegister(UserRequest) returns(UserResponse);
+}

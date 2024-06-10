@@ -1,0 +1,20 @@
+syntax = "proto3"; // 指定proto版本，有2和3
+
+package proto;     // 指定文件生成出来的package，感觉没啥用，注释也不影响，都是按照option的
+
+// option go_package = "path;name";
+// path表示生成的go文件的存放地址，会自动生成目录，.表示当前目录
+// name表示生成的go文件的包名
+option go_package = "./;proto";
+
+
+//  请求内容
+// 数字是序列号，指的是这个变量在这个message中的位置
+message User {//类似结构体了
+  uint32 ID=1;
+  string Name = 2;
+  string Phone = 3;
+  int64 CreateAt = 4;
+  int64 UpdateAt = 5;
+  int64 DeleteAt = 6;
+}
